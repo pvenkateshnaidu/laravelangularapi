@@ -34,13 +34,10 @@ class TimeSheetController extends Controller
             'duration' => 'required',
             'date' => 'unique:employeetimesheet,fromDate,NULL,timeSheetId,userId,'.Auth::user()->id
         ]);
-        $jsDateTS = strtotime($request->date);
-        if ($jsDateTS !== false)
-         $finaldate = date('Y-m-d', $jsDateTS );
 
         $user = TimeSheet::create([
             'duration' => $request->duration,
-            'fromDate' => $finaldate,
+            'fromDate' => $request->date,
             'assignment' => $request->assignment,
             'userId' => Auth::user()->id,
             'serviceCode' => "Regular"
