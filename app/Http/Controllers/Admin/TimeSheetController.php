@@ -25,6 +25,7 @@ class TimeSheetController extends Controller
 
         $timesheet = TimeSheet::whereBetween('fromDate', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
         ->where('userId','=',Auth::user()->id)
+        ->orderBy('fromDate', 'ASC')
         ->get();
         return response()->json(['timesheet' => $timesheet ], 200);
     }
@@ -52,6 +53,7 @@ class TimeSheetController extends Controller
        $to= Carbon::parse($id)->endOfWeek(Carbon::SATURDAY)->format('Y-m-d');
        $timesheet = TimeSheet::whereBetween('fromDate', [ $from,$to])
        ->where('userId','=',Auth::user()->id)
+       ->orderBy('fromDate', 'ASC')
        ->get();
 
        $currentUser =Auth::user();
