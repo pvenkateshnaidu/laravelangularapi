@@ -26,7 +26,7 @@ class TimeSheetDocumentsController extends Controller
 
         $timesheet = TimeSheetDocuments::where('userId','=',Auth::user()->id)->orderBy('fromDate', 'ASC')->get();
 
-        $path =storage_path("app/uploads/employeedocument/");
+        $path ="https://employees.webmobilez.com/storage/app/uploads/employeedocument/";
         return response()->json(['timesheet' => $timesheet ,'path'=>$path], 200);
     }
     public function store(Request $request)
@@ -62,7 +62,7 @@ class TimeSheetDocumentsController extends Controller
          $documents = TimeSheetDocuments::where('dateOfWeek', '=',$from)
          ->where('userId','=',Auth::user()->id)
          ->orderBy('dateOfWeek', 'ASC')->get();
-       $path =storage_path("app/uploads/employeedocument/");
+         $path ="https://employees.webmobilez.com/storage/app/uploads/employeedocument/";
         return response()->json(['documents' =>$documents,'path'=>$path], 200);
 
         }else{
@@ -79,7 +79,7 @@ class TimeSheetDocumentsController extends Controller
        ->where('userId','=',Auth::user()->id)
        ->orderBy('dateOfWeek', 'ASC')
        ->get();
-       $path =storage_path("app/uploads/employeedocument/");
+       $path ="https://employees.webmobilez.com/storage/app/uploads/employeedocument/";
         return response()->json(['documents' =>$documents,'path'=>$path], 200);
     }
     public function destroy($id)
