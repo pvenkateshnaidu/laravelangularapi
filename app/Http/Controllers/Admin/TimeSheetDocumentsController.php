@@ -78,6 +78,7 @@ class TimeSheetDocumentsController extends Controller
        $documents = TimeSheetDocuments::where('dateOfWeek', '=',$from)
        ->where('userId','=',Auth::user()->id)
        ->orderBy('dateOfWeek', 'ASC')
+       ->take(2)
        ->get();
        $path ="https://employees.webmobilez.com/storage/app/uploads/employeedocument/";
         return response()->json(['documents' =>$documents,'path'=>$path], 200);
