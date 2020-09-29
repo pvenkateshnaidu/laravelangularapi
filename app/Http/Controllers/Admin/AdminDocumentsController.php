@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\TimeSheetDocuments;
 use Carbon\Carbon;
 use Auth;
-class AdminTimeSheetsController extends Controller
+class AdminDocumentsController extends Controller
 {
     public function __construct()
     {
