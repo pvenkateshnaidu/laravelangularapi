@@ -43,5 +43,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::get('getAllTimesheets', 'AdminTimeSheetsController@index');
+});
 
 
