@@ -49,7 +49,7 @@ class TimeSheetDocumentsController extends Controller
             // Get just ext
             $extension = $request->file('image')->getClientOriginalExtension();
             // Filename to store
-            $otherDocumentpath = $stringname.'-'. $id . '_' . $from . '.' . $extension;
+            $otherDocumentpath = $from.'_'.$stringname . '-' . $id . '.' . $extension;
             // Upload Image
             $path =$request->file('image')->storeAs('uploads/employeedocument', $otherDocumentpath);
             $user = TimeSheetDocuments::create([
