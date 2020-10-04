@@ -40,7 +40,8 @@ class TimeSheetDocumentsController extends Controller
         $from= Carbon::parse($request->dateOfWeek)->startOfWeek(Carbon::SUNDAY)->format('Y-m-d');
         if ($request->hasFile('image')) {
 
-
+            $stringname = preg_replace('/\s+/', '', Auth::user()->name);
+            $id=Auth::user()->id;
             // Get filename with the extension
             $filenameWithExt = $request->file('image')->getClientOriginalName();
             //Get just filename
@@ -48,7 +49,7 @@ class TimeSheetDocumentsController extends Controller
             // Get just ext
             $extension = $request->file('image')->getClientOriginalExtension();
             // Filename to store
-            $otherDocumentpath = $filename . '_' . time() . '.' . $extension;
+            $otherDocumentpath = $stringname.'-'. $id . '_' . $from . '.' . $extension;
             // Upload Image
             $path =$request->file('image')->storeAs('uploads/employeedocument', $otherDocumentpath);
             $user = TimeSheetDocuments::create([
@@ -59,9 +60,11 @@ class TimeSheetDocumentsController extends Controller
 
 
         $from= Carbon::parse($from)->startOfWeek(Carbon::SUNDAY)->format('Y-m-d');
+
          $documents = TimeSheetDocuments::where('dateOfWeek', '=',$from)
          ->where('userId','=',Auth::user()->id)
          ->orderBy('dateOfWeek', 'ASC')->get();
+
          $path ="https://employees.webmobilez.com/storage/app/uploads/employeedocument/";
         return response()->json(['documents' =>$documents,'path'=>$path], 200);
 
