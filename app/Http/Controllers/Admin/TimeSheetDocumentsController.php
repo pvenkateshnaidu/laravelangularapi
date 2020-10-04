@@ -40,6 +40,7 @@ class TimeSheetDocumentsController extends Controller
         $from= Carbon::parse($request->dateOfWeek)->startOfWeek(Carbon::SUNDAY)->format('Y-m-d');
         if ($request->hasFile('image')) {
             $pathDate= Carbon::parse($request->dateOfWeek)->startOfWeek(Carbon::SUNDAY)->format('d-m-Y');
+            $pathDateto= Carbon::parse($request->dateOfWeek)->endOfWeek(Carbon::SATURDAY)->format('d-m-Y');
             $stringname = preg_replace('/\s+/', '', Auth::user()->name);
             $id=Auth::user()->id;
             // Get filename with the extension
@@ -49,7 +50,7 @@ class TimeSheetDocumentsController extends Controller
             // Get just ext
             $extension = $request->file('image')->getClientOriginalExtension();
             // Filename to store
-            $otherDocumentpath = $pathDate.'_'.$stringname . '-' . $id . '.' . $extension;
+            $otherDocumentpath = $pathDate.'to'.$pathDateto.'_'.$stringname . '-' . $id . '.' . $extension;
             // Upload Image
             $path =$request->file('image')->storeAs('uploads/employeedocument', $otherDocumentpath);
             $user = TimeSheetDocuments::create([
