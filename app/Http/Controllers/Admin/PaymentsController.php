@@ -23,7 +23,8 @@ class PaymentsController extends Controller
     {
         //
 
-        $timesheet = Payments::where('userId','=',Auth::user()->id)
+     //   $timesheet = Payments::where('userId','=',Auth::user()->id)
+     $timesheet = Payments::with('user_details')
         ->orderBy('created_at', 'DESC')
         ->get();
         return response()->json(['timesheet' => $timesheet ], 200);
@@ -39,7 +40,7 @@ class PaymentsController extends Controller
             'amount' => $request->amount,
             'transferDate' => $request->transferDate,
             'confirmationNumber' => $request->confirmationNumber,
-            'userId' => Auth::user()->id,
+            'userId' => $request->userId,
             'paymentStatus' => $request->paymentStatus,
             'created_at' => Carbon::now()
         ]);
