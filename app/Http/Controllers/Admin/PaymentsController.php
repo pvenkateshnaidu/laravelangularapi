@@ -41,6 +41,7 @@ class PaymentsController extends Controller
             'confirmationNumber' => $request->confirmationNumber,
             'userId' => Auth::user()->id,
             'paymentStatus' => $request->paymentStatus,
+            'created_at' => Carbon::now()
         ]);
 
         return response()->json(['user' => "Payment Created Successfully"], 200);
