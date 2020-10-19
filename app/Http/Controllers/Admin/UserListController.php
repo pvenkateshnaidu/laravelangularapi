@@ -54,7 +54,7 @@ class UserListController extends Controller
 
         $user = User::create([
             'name' => $request->name,
-            'lastName' => $request->lastName,
+            'lastName' => "podili",
             'companyName' => $request->companyName,
             'technology' => $request->technology,
             'rate' => $request->rate,
