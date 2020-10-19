@@ -50,12 +50,10 @@ class PaymentsController extends Controller
     public function show($id)
     {
         //
-
-       $timesheet = Payments::where('userId','=',Auth::user()->id)
-       ->get();
+        $user = Payments::find($id);
 
        $currentUser =Auth::user();
-        return response()->json(['timesheet' =>$timesheet,"user"=>$currentUser], 200);
+        return response()->json(['payment' =>$user,"user"=>$currentUser], 200);
     }
  /**
      * Show the form for editing the specified resource.
