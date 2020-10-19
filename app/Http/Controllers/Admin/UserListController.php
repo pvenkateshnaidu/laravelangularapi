@@ -125,7 +125,16 @@ class UserListController extends Controller
         }else{
             $user->update([
                 'name' => $request->name,
-                'email' => $request->email
+                'email' => $request->email,
+                'lastName' =>$request->lastName,
+                'companyName' => $request->companyName,
+                'technology' => $request->technology,
+                'rate' => $request->rate,
+                'role' => $request->role,
+                'address' => $request->address,
+                'paymentType' => $request->paymentType,
+                'paymentMode' => $request->paymentMode,
+                'hoursperWeek' =>$request->hoursperWeek,
 
             ]);
         }
