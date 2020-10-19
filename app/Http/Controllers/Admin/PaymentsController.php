@@ -50,11 +50,8 @@ class PaymentsController extends Controller
     public function show($id)
     {
         //
-       $from= Carbon::parse($id)->startOfWeek(Carbon::SUNDAY)->format('Y-m-d');
-       $to= Carbon::parse($id)->endOfWeek(Carbon::SATURDAY)->format('Y-m-d');
-       $timesheet = TimeSheet::whereBetween('fromDate', [ $from,$to])
-       ->where('userId','=',Auth::user()->id)
-       ->orderBy('fromDate', 'ASC')
+
+       $timesheet = Payments::where('userId','=',Auth::user()->id)
        ->get();
 
        $currentUser =Auth::user();
@@ -69,8 +66,8 @@ class PaymentsController extends Controller
     public function edit($id)
     {
 
-        $user = TimeSheet::find($id);
-        return response()->json(['user' => $user], 200);
+        $user = Payments::find($id);
+        return response()->json(['payment' => $user], 200);
     }
     public function update(Request $request, $id)
     {
