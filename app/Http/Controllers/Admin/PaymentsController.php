@@ -50,7 +50,7 @@ class PaymentsController extends Controller
     public function show($id)
     {
         //
-        $user = Payments::find($id);
+        $user = Payments::with('user_details')->find($id);
 
        $currentUser =Auth::user();
         return response()->json(['payment' =>$user,"user"=>$currentUser], 200);
