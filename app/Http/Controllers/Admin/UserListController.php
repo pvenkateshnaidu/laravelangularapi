@@ -44,14 +44,25 @@ class UserListController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:5',
         ]);
 
+
         $user = User::create([
             'name' => $request->name,
+            'lastName' => $request->lastName,
+            'companyName' => $request->companyName,
+            'technology' => $request->technology,
+            'rate' => $request->rate,
+            'role' => $request->role,
+            'address' => $request->address,
+            'paymentType' => $request->paymentType,
+            'paymentMode' => $request->paymentMode,
+            'hoursperWeek' =>$request->hoursperWeek,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
