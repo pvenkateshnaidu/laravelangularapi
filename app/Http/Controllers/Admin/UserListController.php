@@ -32,7 +32,7 @@ class UserListController extends Controller
      */
     public function create()
     {
-        $user = User::select('name','email','id','address')->find(Auth::user()->id);
+        $user = User::find(Auth::user()->id);
         return response()->json($user, 200);
     }
 
