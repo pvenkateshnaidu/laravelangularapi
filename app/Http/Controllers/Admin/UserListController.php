@@ -106,8 +106,34 @@ class UserListController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        if($request->password)
-        {
+
+            $user            = User::find($id);
+            if($request->name)
+            $user->name  = $request->name;
+            if($request->email)
+            $user->email  = $request->email;
+            if($request->password)
+            $user->password  = bcrypt($request->password);
+            if($request->lastName)
+            $user->lastName  = $request->lastName;
+            if($request->companyName)
+            $user->companyName  = $request->companyName;
+            if($request->technology)
+            $user->technology  = $request->technology;
+            if($request->rate)
+            $user->rate  = $request->rate;
+            if($request->role)
+            $user->role  = $request->role;
+            if($request->address)
+            $user->address  = $request->address;
+            if($request->paymentType)
+            $user->paymentType  = $request->paymentType;
+            if($request->paymentMode)
+            $user->paymentMode  = $request->paymentMode;
+            if($request->hoursperWeek)
+            $user->hoursperWeek  = $request->hoursperWeek;
+            $user->save();
+/*
         $user->update([
             'name' => $request->name,
             'lastName' =>$request->lastName,
@@ -121,23 +147,8 @@ class UserListController extends Controller
             'hoursperWeek' =>$request->hoursperWeek,
             'email' => $request->email,
             'password' => bcrypt($request->password)
-        ]);
-        }else{
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'lastName' =>$request->lastName,
-                'companyName' => $request->companyName,
-                'technology' => $request->technology,
-                'rate' => $request->rate,
-                'role' => $request->role,
-                'address' => $request->address,
-                'paymentType' => $request->paymentType,
-                'paymentMode' => $request->paymentMode,
-                'hoursperWeek' =>$request->hoursperWeek,
+        ]); */
 
-            ]);
-        }
         return response()->json(['user' => $user,'message' => 'User Updated Successfully'], 200);
     }
 
