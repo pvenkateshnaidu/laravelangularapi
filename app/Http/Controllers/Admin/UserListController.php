@@ -35,6 +35,11 @@ class UserListController extends Controller
         $user = User::find(Auth::user()->id);
         return response()->json($user, 200);
     }
+    public function getCurrentUserData()
+    {
+        $user = User::find(Auth::user()->id);
+        return response()->json(['user' => $user], 200);
+    }
 
     /**
      * Store a newly created resource in storage.

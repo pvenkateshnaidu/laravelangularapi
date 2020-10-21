@@ -33,9 +33,12 @@ Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], func
     Route::resource('user-list', 'UserListController');
 });
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
-    Route::resource('payment-list', 'PaymentsController');
+    Route::get('get-user-data', 'UserListController@getCurrentUserData');
 });
 
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::resource('payment-list', 'PaymentsController');
+});
 
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
     Route::resource('time-sheet', 'TimeSheetController');
