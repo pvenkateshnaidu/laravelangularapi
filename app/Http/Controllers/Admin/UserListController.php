@@ -60,6 +60,10 @@ class UserListController extends Controller
             'rate' => $request->rate,
             'role' => $request->role,
             'address' => $request->address,
+            'address1' => $request->address1,
+            'zipcode' => $request->zipcode,
+            'city' => $request->city,
+            'state' => $request->state,
             'paymentType' => $request->paymentType,
             'paymentMode' => $request->paymentMode,
             'hoursperWeek' =>$request->hoursperWeek,
@@ -126,6 +130,14 @@ class UserListController extends Controller
             $user->role  = $request->role;
             if($request->address)
             $user->address  = $request->address;
+            if($request->address1)
+            $user->address1  = $request->address1;
+            if($request->state)
+            $user->state  = $request->state;
+            if($request->city)
+            $user->city  = $request->city;
+            if($request->zipcode)
+            $user->zipcode  = $request->zipcode;
             if($request->paymentType)
             $user->paymentType  = $request->paymentType;
             if($request->paymentMode)
