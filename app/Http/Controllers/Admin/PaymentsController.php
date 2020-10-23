@@ -22,6 +22,7 @@ class PaymentsController extends Controller
     public function index()
     {
         //
+        $timesheet='';
         if(Auth::user()->role=='Admin')
         {
             $timesheet = Payments::with('user_details')
