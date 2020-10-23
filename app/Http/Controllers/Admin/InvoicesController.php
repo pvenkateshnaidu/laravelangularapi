@@ -106,6 +106,6 @@ class InvoicesController extends Controller
     public function getCount()
     {
         $timesheet = Invoices::get();
-        return response()->json(['count' => $timesheet ], 200);
+        return response()->json(['count' => count($timesheet) ], 200);
     }
 }
