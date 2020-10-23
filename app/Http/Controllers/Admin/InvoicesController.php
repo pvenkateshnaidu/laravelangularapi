@@ -24,10 +24,19 @@ class InvoicesController extends Controller
         //
 
      //   $timesheet = Payments::where('userId','=',Auth::user()->id)
-     $timesheet = Invoices::with('user_details')
-     ->where('userId','=',Auth::user()->id)
-        ->orderBy('created_at', 'DESC')
-        ->get();
+     if(Auth::user()->role=='Admin')
+     {
+        $timesheet = Invoices::with('user_details')
+
+           ->orderBy('created_at', 'DESC')
+           ->get();
+     }else{
+        $timesheet = Invoices::with('user_details')
+        ->where('userId','=',Auth::user()->id)
+           ->orderBy('created_at', 'DESC')
+           ->get();
+     }
+
         return response()->json(['timesheet' => $timesheet ], 200);
     }
     public function store(Request $request)
