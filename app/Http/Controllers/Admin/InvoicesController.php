@@ -102,4 +102,10 @@ class InvoicesController extends Controller
         return response()->json(['user' => $user,'message' => 'User Updated Successfully'], 200);
     }
 
+
+    public function getCount()
+    {
+        $timesheet = Invoices::get();
+        return response()->json(['count' => $timesheet ], 200);
+    }
 }
