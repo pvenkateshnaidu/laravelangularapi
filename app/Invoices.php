@@ -13,12 +13,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoices extends Model
 {
-    
+
 	protected $table = 'invoices';
 	protected $primaryKey = 'invoiceId';
 
 	protected $fillable = [
-		'date','services','hours','rate','printName','amount','signature','invoiceNumber','userId'
+		'date','services','hours','rate','printName','amount','signature','invoiceNumber','userId','signature'
 	];
     public function user_details()
     {

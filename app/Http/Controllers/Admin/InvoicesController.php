@@ -44,6 +44,8 @@ class InvoicesController extends Controller
             'hours' => $request->hours,
             'invoiceNumber' => $request->invoiceNumber,
             'rate' => $request->rate,
+            'printName' =>$request->printName,
+            'signature' =>$request->signature,
             'created_at' => Carbon::now()
         ]);
 
