@@ -38,10 +38,11 @@ class InvoicesController extends Controller
 
         $user = Invoices::create([
             'amount' => $request->amount,
-            'invoiceDate' => $request->invoiceDate,
+            'date' => $request->date,
             'description' => $request->description,
             'userId' => Auth::user()->id,
             'hours' => $request->hours,
+            'invoiceNumber' => $request->invoiceNumber,
             'rate' => $request->rate,
             'created_at' => Carbon::now()
         ]);
