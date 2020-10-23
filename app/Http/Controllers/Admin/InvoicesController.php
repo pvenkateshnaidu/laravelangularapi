@@ -39,7 +39,7 @@ class InvoicesController extends Controller
         $user = Invoices::create([
             'amount' => $request->amount,
             'date' => $request->date,
-            'description' => $request->description,
+            'services' => $request->services,
             'userId' => Auth::user()->id,
             'hours' => $request->hours,
             'invoiceNumber' => $request->invoiceNumber,
