@@ -68,9 +68,38 @@ class InvoicesController extends Controller
     public function edit($id)
     {
 
-        $user = Invoices::find($id);
+        $user = Invoices::with('user_details')>-find($id);
         return response()->json(['payment' => $user], 200);
     }
+ /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
 
+            $user   = Invoices::find($id);
+            if($request->amount)
+            $user->amount  = $request->amount;
+            if($request->date)
+            $user->date  = $request->date;
+            if($request->services)
+            $user->services  = $request->services;
+            if($request->rate)
+            $user->rate  = $request->rate;
+            if($request->hours)
+            $user->invoiceNumber  = $request->invoiceNumber;
+            if($request->signature)
+            $user->signature  = $request->signature;
+            if($request->printName)
+            $user->printName  = $request->printName;
+            $user->save();
+
+
+        return response()->json(['user' => $user,'message' => 'User Updated Successfully'], 200);
+    }
 
 }
