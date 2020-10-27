@@ -47,7 +47,7 @@ class InvoicesController extends Controller
         ]);
 
         $user = Invoices::create([
-            'amount' => $request->amount,
+            'amount' => ($request->hours*$request->rate),
             'date' => $request->date,
             'services' => $request->services,
             'userId' => Auth::user()->id,
@@ -92,8 +92,8 @@ class InvoicesController extends Controller
     {
 
             $user   = Invoices::find($id);
-            if($request->amount)
-            $user->amount  = $request->amount;
+            if($request->hours)
+            $user->amount  = ($request->hours*$request->rate);
             if($request->date)
             $user->date  = $request->date;
             if($request->services)
