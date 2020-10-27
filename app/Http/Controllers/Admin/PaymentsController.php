@@ -49,6 +49,7 @@ class PaymentsController extends Controller
 
         $user = Payments::create([
             'amount' => $request->amount,
+            'hours' => $request->hours,
             'transferDate' => $request->transferDate,
             'confirmationNumber' => $request->confirmationNumber,
             'userId' => $request->userId,
@@ -98,7 +99,7 @@ class PaymentsController extends Controller
             'duration' => $request->duration,
             'fromDate' => $request->fromDate,
             'assignment' => $request->assignment,
-            'serviceCode' => $request->serviceCode
+            'serviceCode' => $request->serviceCode,
 
         ]);
             return response()->json(['user' => $user,'message' => 'Timesheet Updated Successfully'], 200);

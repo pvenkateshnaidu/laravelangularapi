@@ -17,7 +17,7 @@ class Payments extends Model
 	protected $primaryKey = 'paymentId';
 
 	protected $fillable = [
-		'amount','transferDate','confirmationNumber','paymentStatus','userId'
+		'amount','transferDate','confirmationNumber','paymentStatus','userId','hours' 
 	];
     public function user_details()
     {
