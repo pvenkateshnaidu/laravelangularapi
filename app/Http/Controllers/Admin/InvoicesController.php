@@ -94,13 +94,15 @@ class InvoicesController extends Controller
             $user   = Invoices::find($id);
             if($request->hours)
             $user->amount  = ($request->hours*$request->rate);
+            if($request->hours)
+            $user->hours  = $request->hours;
             if($request->date)
             $user->date  = $request->date;
             if($request->services)
             $user->services  = $request->services;
             if($request->rate)
             $user->rate  = $request->rate;
-            if($request->hours)
+            if($request->invoiceNumber)
             $user->invoiceNumber  = $request->invoiceNumber;
             if($request->signature)
             $user->signature  = $request->signature;
