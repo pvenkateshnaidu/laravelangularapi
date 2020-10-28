@@ -46,7 +46,8 @@ class PaymentsController extends Controller
             'amount' => 'required',
          //   'date' => 'unique:employeetimesheet,fromDate,NULL,timeSheetId,userId,'.Auth::user()->id
         ]);
-
+        $fromdate=Carbon::createFromFormat('Y-m-d', $request->rangeDates[0]);
+        $toDate=Carbon::createFromFormat('Y-m-d', $request->rangeDates[1]);
         $user = Payments::create([
             'amount' => $request->amount,
             'hours' => $request->hours,
@@ -54,6 +55,8 @@ class PaymentsController extends Controller
             'confirmationNumber' => $request->confirmationNumber,
             'userId' => $request->userId,
             'paymentStatus' => $request->paymentStatus,
+            'fromdate' => $fromdate,
+            'toDate' => $toDate,
             'created_at' => Carbon::now()
         ]);
 
