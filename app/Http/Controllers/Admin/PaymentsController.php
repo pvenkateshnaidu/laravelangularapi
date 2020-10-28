@@ -85,36 +85,29 @@ class PaymentsController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'duration' => 'required',
-        //   'fromDate'    => 'required|unique:employeetimesheet,fromDate,'.$id.',timeSheetId,userId,'.Auth::user()->id
-           //'fromDate'    => 'required|unique:employeetimesheet,fromDate,' . $id . ',id',
-        ]);
-        $result= TimeSheet::where('fromDate', '=', $request->fromDate)
-        ->where('userId', '=', Auth::user()->id)
-        ->where('timeSheetId', '!=', $id)
-        ->get();
-
-       if(empty(count($result))){
-
-
-        $user = TimeSheet::find($id);
-        $user->update([
-            'duration' => $request->duration,
-            'fromDate' => $request->fromDate,
-            'assignment' => $request->assignment,
-            'serviceCode' => $request->serviceCode,
-
-        ]);
-            return response()->json(['user' => $user,'message' => 'Timesheet Updated Successfully'], 200);
-
-               }else{
-                return response()->json(['message' => 'Date Field filed already Exist'], 400);
-
-               }
-
-
-
+        if($request->rangeDates[0])
+        $fromdate=Carbon::parse($request->rangeDates[0])->addDay(1)->toDateTimeString();
+        if($request->rangeDates[1])
+        $toDate=Carbon::parse($request->rangeDates[1])->addDay(1)->toDateTimeString();
+        $user            = Payments::find($id);
+        if($request->amount)
+        $user->amount  = $request->amount;
+        if($request->rangeDates[0])
+        $user->fromDate  = $request->rangeDates[0];
+        if($request->rangeDates[1])
+        $user->toDate  = $request->rangeDates[1];
+        if($request->hours)
+        $user->hours  = $request->hours;
+        if($request->transferDate)
+        $user->transferDate  = $request->transferDate;
+        if($request->confirmationNumber)
+        $user->confirmationNumber  = $request->confirmationNumber;
+        if($request->userId)
+        $user->userId  = $request->userId;
+        if($request->paymentStatus)
+        $user->paymentStatus  = $request->paymentStatus;
+        $user->save();
+    return response()->json(['payment' => $user,'message' => 'payment Updated Successfully'], 200);
     }
 
 
