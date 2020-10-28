@@ -248,7 +248,7 @@ var UserEditComponent = /** @class */ (function () {
         var _this = this;
         this.userRest.getUsers().subscribe(function (response) { console.log(_this.users = response.user); }, function (error) { console.log(error); });
         var id = this.route.snapshot.params.id;
-        this.userRest.editUser(id).subscribe(function (response) {
+        this.userRest.editPayment(id).subscribe(function (response) {
             console.log(response);
             _this.registerForm.patchValue({
                 'userId': response.payment.userId,
@@ -539,8 +539,11 @@ var UserRestService = /** @class */ (function () {
     UserRestService.prototype.getUsers = function () {
         return this.http.get('https://employees.webmobilez.com/public/api/user-list');
     };
-    UserRestService.prototype.editUser = function (id) {
+    UserRestService.prototype.editPayment = function (id) {
         return this.http.get('https://employees.webmobilez.com/public/api/payment-list/' + id);
+    };
+    UserRestService.prototype.editUser = function (id) {
+        return this.http.get('https://employees.webmobilez.com/public/api/user-list/' + id);
     };
     UserRestService.prototype.updatePayment = function (form, id) {
         return this.http.put('https://employees.webmobilez.com/public/api/payment-list/' + id, form.value);

@@ -215,7 +215,7 @@ let UserEditComponent = class UserEditComponent {
     ngOnInit() {
         this.userRest.getUsers().subscribe((response) => { console.log(this.users = response.user); }, (error) => { console.log(error); });
         let id = this.route.snapshot.params.id;
-        this.userRest.editUser(id).subscribe((response) => {
+        this.userRest.editPayment(id).subscribe((response) => {
             console.log(response);
             this.registerForm.patchValue({
                 'userId': response.payment.userId,
@@ -471,8 +471,11 @@ let UserRestService = class UserRestService {
     getUsers() {
         return this.http.get('https://employees.webmobilez.com/public/api/user-list');
     }
-    editUser(id) {
+    editPayment(id) {
         return this.http.get('https://employees.webmobilez.com/public/api/payment-list/' + id);
+    }
+    editUser(id) {
+        return this.http.get('https://employees.webmobilez.com/public/api/user-list/' + id);
     }
     updatePayment(form, id) {
         return this.http.put('https://employees.webmobilez.com/public/api/payment-list/' + id, form.value);
