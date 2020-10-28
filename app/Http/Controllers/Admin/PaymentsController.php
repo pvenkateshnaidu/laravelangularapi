@@ -93,9 +93,9 @@ class PaymentsController extends Controller
         if($request->amount)
         $user->amount  = $request->amount;
         if($request->rangeDates)
-        $user->fromDate  = $request->rangeDates[0];
+        $user->fromDate  = $fromdate;
         if($request->rangeDates)
-        $user->toDate  = $request->rangeDates[1];
+        $user->toDate  =  $toDate;
         if($request->hours)
         $user->hours  = $request->hours;
         if($request->transferDate)
