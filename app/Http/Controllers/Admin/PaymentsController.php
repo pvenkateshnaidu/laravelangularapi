@@ -56,7 +56,7 @@ class PaymentsController extends Controller
             'confirmationNumber' => $request->confirmationNumber,
             'userId' => $request->userId,
             'paymentStatus' => $request->paymentStatus,
-            'fromdate' => $fromdate,
+            'fromDate' => $fromdate,
             'toDate' => $toDate,
             'created_at' => Carbon::now()
         ]);
