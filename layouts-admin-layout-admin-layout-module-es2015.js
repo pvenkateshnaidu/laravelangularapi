@@ -8383,7 +8383,7 @@ __export(__webpack_require__(/*! ./components/dynamicdialog/dynamicdialog */ "./
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<p-dialog header=\"Payment Details\" [resizable]=\"true\" [(visible)]=\"displayBasic\" [style]=\"{width: '50vw'}\" [baseZIndex]=\"10000\">\r\n  <button (click)=\"generatePDF()\" [disabled]=\"!address\">Download PDF</button>\r\n  <div class=\"container\" id=\"contentToConvert\" >\r\n    <h6>{{name}} {{firstName}}'s INVOICE</h6>\r\n    <div class=\"table-bordered\" id=\"tablecontent\">\r\n      <table class=\"table table-bordered\">\r\n          <thead>\r\n              <tr>\r\n                  <th colspan=\"3\">Confirmation Number: {{confirmationNumber}}<br /></th>\r\n                  <th colspan=\"3\">Transfer Date :{{transferdate|date}}</th>\r\n              </tr>\r\n          </thead>\r\n          <tbody>\r\n              <tr>\r\n                  <td>  Address:  <span *ngIf=\"address\">{{address}} {{address1}},  {{state}},  {{city}},  {{zipcode}}.</span><br /></td>\r\n                  <td colspan=\"3\"></td>\r\n\r\n              </tr>\r\n              <tr>\r\n                  <td class=\"text-right\" colspan=\"2\"><strong>Payment Type</strong></td>\r\n                  <td rowspan  colspan=\"2\"><strong>Date of Transfer</strong></td>\r\n                  <td rowspan  colspan=\"2\"> <strong>Amount</strong></td>\r\n\r\n              </tr>\r\n              <tr>\r\n                <td class=\"text-right\" colspan=\"2\">{{paymentType}}</td>\r\n                <td rowspan colspan=\"2\">{{transferdate|date}}</td>\r\n                <td rowspan colspan=\"2\">${{amount}}</td>\r\n            </tr>\r\n          </tbody>\r\n      </table>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <ng-template pTemplate=\"footer\">\r\n    <p-button icon=\"pi pi-check\" (click)=\"displayBasic=false\" label=\"Yes\" styleClass=\"p-button-text\"></p-button>\r\n    <p-button icon=\"pi pi-times\" (click)=\"displayBasic=false\" label=\"No\"></p-button>\r\n  </ng-template>\r\n</p-dialog>\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-lg-4\" style=\"marging:10px\" *ngFor=\"let item of timeSheets; let myIndex = index\">\r\n      <p-card [style]=\"{width: '360px'}\" styleClass=\"p-card-shadow\">\r\n        <h6>Employee Name : {{item.user_details.name}}</h6>\r\n        <h5> Date of Payment:<br> {{item.transferDate|date}} </h5>\r\n        <h6>Net Payment : ${{item.amount}}</h6>\r\n        <h6>Payment Type : {{item.user_details.paymentType}} </h6>\r\n      <button (click)=\"showBasicDialog(item.paymentId)\"  class=\"btn btn-warning btn-sm\"> <i class=\"fa fa-eye\" aria-hidden=\"true\"></i></button>\r\n     </p-card>\r\n    </div>\r\n\r\n\r\n\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "\r\n<p-dialog header=\"Payment Details\" [resizable]=\"true\" [(visible)]=\"displayBasic\" [style]=\"{width: '50vw'}\" [baseZIndex]=\"10000\">\r\n  <button (click)=\"generatePDF()\" [disabled]=\"!address\">Download PDF</button>\r\n  <div class=\"container\" id=\"contentToConvert\" >\r\n    <h6>{{name}}'s INVOICE</h6>\r\n    <div class=\"table-bordered\" id=\"tablecontent\">\r\n      <table class=\"table table-bordered\">\r\n          <thead>\r\n              <tr>\r\n                  <th colspan=\"4\">Confirmation Number: {{confirmationNumber}}<br /></th>\r\n                  <th colspan=\"4\">Transfer Date :{{transferdate|date}}</th>\r\n\r\n              </tr>\r\n          </thead>\r\n          <tbody>\r\n              <tr>\r\n                  <td  colspan=\"4\">  <strong>Address</strong> :  <span *ngIf=\"address\">{{address}} {{address1}},  {{state}},  {{city}},  {{zipcode}}.</span><br /></td>\r\n                  <th colspan=\"4\">Invoice For : {{fromDate|date}} - {{toDate|date}}</th>\r\n\r\n              </tr>\r\n              <tr>\r\n                  <td class=\"text-right\" colspan=\"2\"><strong>Payment Type</strong></td>\r\n                  <td rowspan  colspan=\"2\"><strong>Date of Transfer</strong></td>\r\n                  <td rowspan  colspan=\"2\"><strong>Hours</strong></td>\r\n                  <td rowspan  colspan=\"2\"> <strong>Amount</strong></td>\r\n\r\n              </tr>\r\n              <tr>\r\n                <td class=\"text-right\" colspan=\"2\">{{paymentType}}</td>\r\n                <td rowspan colspan=\"2\">{{transferdate|date}}</td>\r\n                <td rowspan colspan=\"2\">{{hours}}</td>\r\n                <td rowspan colspan=\"2\">${{amount}}</td>\r\n            </tr>\r\n          </tbody>\r\n      </table>\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <ng-template pTemplate=\"footer\">\r\n    <p-button icon=\"pi pi-check\" (click)=\"displayBasic=false\" label=\"Yes\" styleClass=\"p-button-text\"></p-button>\r\n    <p-button icon=\"pi pi-times\" (click)=\"displayBasic=false\" label=\"No\"></p-button>\r\n  </ng-template>\r\n</p-dialog>\r\n\r\n<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-lg-4\" style=\"marging:10px\" *ngFor=\"let item of timeSheets; let myIndex = index\">\r\n      <p-card [style]=\"{width: '360px'}\" styleClass=\"p-card-shadow\">\r\n        <h6>Employee Name : {{item.user_details.name}} {{item.user_details.lastName}}</h6>\r\n        <h5> Date of Payment:<br> {{item.transferDate|date}} </h5>\r\n        <h6>Hours : {{item.hours}}</h6>\r\n        <h6>Invoice For : {{item.fromDate|date}} to {{item.toDate|date}}</h6>\r\n        <h6>Net Payment : ${{item.amount}}</h6>\r\n        <h6>Payment Type : {{item.user_details.paymentType}} </h6>\r\n      <button (click)=\"showBasicDialog(item.paymentId)\"  class=\"btn btn-warning btn-sm\"> <i class=\"fa fa-eye\" aria-hidden=\"true\"></i></button>\r\n     </p-card>\r\n    </div>\r\n\r\n\r\n\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -9268,8 +9268,6 @@ let DashboardComponent = class DashboardComponent {
         this.dataload = false;
         this.userRest.getpayments().subscribe((response) => { console.log(this.timeSheets = response.timesheet); }, (error) => { console.log(error); });
         this.userRest.loadUser().subscribe((response) => { console.log(response = this.user); }, (error) => { console.log(error); });
-        console.log("User");
-        console.log(this.user);
         this.address = "";
     }
     generatePDF() {
@@ -9289,17 +9287,16 @@ let DashboardComponent = class DashboardComponent {
         // this.displayPosition = true;
         this.displayBasic = true;
         this.dataload = false;
-        console.log(id);
         this.amount = 0;
         this.confirmationNumber = 0;
         this.paymentType = '';
+        this.fromDate = '';
+        this.toDate = '';
         this.userRest.getpaymentbyId(id).subscribe((response) => {
             this.dataload = true;
-            console.log(this.values = response.payment);
+            this.values = response.payment;
             this.displayDataBasic = true;
-            this.name = response.payment.user_details.name;
-            if (response.payment.user_details.lastName)
-                this.firstName = response.payment.user_details.lastName;
+            this.name = response.payment.user_details.name + " " + response.payment.user_details.lastName;
             this.address = response.payment.user_details.address;
             this.address1 = response.payment.user_details.address1;
             this.city = response.payment.user_details.city;
@@ -9307,8 +9304,11 @@ let DashboardComponent = class DashboardComponent {
             this.zipcode = response.payment.user_details.zipcode;
             this.transferdate = response.payment.transferDate;
             this.amount = response.payment.amount;
+            this.hours = response.payment.hours;
             this.confirmationNumber = response.payment.confirmationNumber;
             this.paymentType = response.payment.user_details.paymentType;
+            this.fromDate = response.payment.fromDate;
+            this.toDate = response.payment.toDate;
         }, (error) => { console.log(error); });
     }
 };

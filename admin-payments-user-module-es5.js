@@ -1,5 +1,23 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["admin-payments-user-module"],{
 
+/***/ "./node_modules/primeng/calendar.js":
+/*!******************************************!*\
+  !*** ./node_modules/primeng/calendar.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* Shorthand */
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./components/calendar/calendar */ "./node_modules/primeng/components/calendar/calendar.js"));
+
+/***/ }),
+
 /***/ "./node_modules/primeng/inplace.js":
 /*!*****************************************!*\
   !*** ./node_modules/primeng/inplace.js ***!
@@ -25,7 +43,7 @@ __export(__webpack_require__(/*! ./components/inplace/inplace */ "./node_modules
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n        <div class=\"col-md-12\">\n                <h4 class=\"remove-margin\">Add payment status to Employee </h4>\n                <div class=\"card\">\n                  <div class=\"card-header\">\n                    <!-- <h5 class=\"card-title\">Edit Profile</h5> -->\n                  </div>\n                  <div class=\"card-body\">\n                    <form [formGroup]=\"registerForm\" (ngSubmit)=\"registerUser()\">\n                      <div class=\"row\">\n                          <div class=\"col-md-12\">\n\n                              <label>User Name</label>\n                              <select  (change)=\"firstDropDownChanged()\" tooltipPosition=\"top\" class=\"form-control\" formControlName=\"userId\">\n                                <option value=\"\" selected=\"selected\">--Select Employee--</option>\n                                <option *ngFor=\"let order of users\" [value]=\"order.id\">\n                                    {{order.name}}</option>\n                            </select>\n\n\n                          </div>\n                      </div>\n                      <div class=\"row\" *ngIf=\"rate\">\n                        <div class=\"col-md-12\">\n                          <label>Rate</label>\n                          <input class=\"form-control\" type=\"number\" value=\"{{rate}}\" readonly>\n\n                        </div>\n                       </div>\n                       <div class=\"row\" *ngIf=\"companyName\">\n                        <div class=\"col-md-12\">\n                          <label>Company Name</label>\n                          <input class=\"form-control\" type=\"text\" value=\"{{companyName}}\" readonly>\n                        </div>\n                       </div>\n                       <div class=\"row\">\n                        <div class=\"col-md-12\">\n                          <div class=\"form-group\">\n                            <label for=\"exampleInputEmail1\">Hours</label>\n                            <input type=\"number\" formControlName=\"hours\" class=\"form-control\" placeholder=\"Hours\" required>\n\n                            <div *ngIf=\"hours.invalid && (hours.dirty || hours.touched)\"\n                                    class=\"form-text text-muted\">\n                                  <div *ngIf=\"hours.errors?.required\">\n                                    Amount is required.\n                                  </div>\n\n                            </div>\n\n                            <small id=\"hoursHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.hours }}</small>\n                          </div>\n                        </div>\n                      </div>\n                        <div class=\"row\">\n                          <div class=\"col-md-12\">\n                            <div class=\"form-group\">\n                              <label for=\"exampleInputEmail1\">Amount</label>\n                              <input type=\"number\" formControlName=\"amount\" class=\"form-control\" placeholder=\"Amount\" required>\n\n                              <div *ngIf=\"amount.invalid && (amount.dirty || amount.touched)\"\n                                      class=\"form-text text-muted\">\n                                    <div *ngIf=\"amount.errors?.required\">\n                                      Amount is required.\n                                    </div>\n\n                              </div>\n\n                              <small id=\"amountHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.amount }}</small>\n                            </div>\n                          </div>\n                        </div>\n                        <div class=\"row\">\n                          <div class=\"col-md-12\">\n                            <div class=\"form-group\">\n                              <label for=\"exampleInputEmail1\">Transfer date</label>\n                              <input type=\"date\" formControlName=\"transferDate\" class=\"form-control\" placeholder=\"Amount\" required>\n\n                              <div *ngIf=\"transferDate.invalid && (transferDate.dirty || transferDate.touched)\"\n                                      class=\"form-text text-muted\">\n                                    <div *ngIf=\"transferDate.errors?.required\">\n                                      transferDate is required.\n                                    </div>\n\n                              </div>\n\n                              <small id=\"transferDateHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.transferDate }}</small>\n                            </div>\n                          </div>\n                        </div>\n                        <div class=\"row\">\n                          <div class=\"col-md-12\">\n                            <div class=\"form-group\">\n                              <label for=\"exampleInputEmail1\">Confirmation Number</label>\n                              <input type=\"text\" formControlName=\"confirmationNumber\" class=\"form-control\" placeholder=\"confirmationNumber\" required>\n\n                              <div *ngIf=\"confirmationNumber.invalid && (confirmationNumber.dirty || confirmationNumber.touched)\"\n                                      class=\"form-text text-muted\">\n                                    <div *ngIf=\"confirmationNumber.errors?.required\">\n                                      confirmationNumber is required.\n                                    </div>\n\n                              </div>\n\n                              <small id=\"confirmationNumberHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.confirmationNumber }}</small>\n                            </div>\n                          </div>\n                        </div>\n                        <div class=\"row\">\n                          <div class=\"col-md-12\">\n                              <div class=\"form-group\">\n                              <label>Payment Status</label>\n                              <select class=\"form-control\" formControlName=\"paymentStatus\">\n                                <option value=\"\" selected>--Select--</option>\n                                <option value=\"Paid\" >Paid</option>\n                                <option value=\"Progress\" >Progress</option>\\\n                                <option value=\"To be pay\" > To be pay</option>\n                            </select>\n                            <div *ngIf=\"paymentStatus.invalid && (paymentStatus.dirty || paymentStatus.touched)\"\n                            class=\"form-text text-muted\">\n                          <div *ngIf=\"paymentStatus.errors?.required\">\n                            paymentStatus is required.\n                          </div>\n\n                    </div>\n\n                    <small id=\"paymentStatusHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.paymentStatus }}</small>\n                              </div>\n                          </div>\n                      </div>\n\n                        <div class=\"row\">\n                          <div class=\"update ml-auto mr-auto\">\n                            <button type=\"submit\" class=\"btn btn-primary btn-round\" [disabled]=\"!disableBtn\" [disabled]=\"!registerForm.valid\">Submit</button>\n                          </div>\n                        </div>\n                      </form>\n                  </div>\n                </div>\n              </div>\n</div>\n"
+module.exports = "<div class=\"row\">\n        <div class=\"col-md-12\">\n                <h4 class=\"remove-margin\">Add payment status to Employee </h4>\n                <div class=\"card\">\n                  <div class=\"card-header\">\n                    <!-- <h5 class=\"card-title\">Edit Profile</h5> -->\n                  </div>\n                  <div class=\"card-body\">\n                    <form [formGroup]=\"registerForm\" (ngSubmit)=\"registerUser()\">\n                      <div class=\"row\">\n                          <div class=\"col-md-12\">\n\n                              <label>User Name</label>\n                              <select  (change)=\"firstDropDownChanged()\" tooltipPosition=\"top\" class=\"form-control\" formControlName=\"userId\">\n                                <option value=\"\" selected=\"selected\">--Select Employee--</option>\n                                <option *ngFor=\"let order of users\" [value]=\"order.id\">\n                                    {{order.name}} {{order.lastName}}</option>\n                            </select>\n\n\n                          </div>\n                      </div>\n\n                      <div class=\"row\" *ngIf=\"rate\">\n                        <div class=\"col-md-12\">\n                          <label>Rate</label>\n                          <input class=\"form-control\" type=\"number\" value=\"{{rate}}\" readonly>\n\n                        </div>\n                       </div>\n                       <div class=\"row\" *ngIf=\"companyName\">\n                        <div class=\"col-md-12\">\n                          <label>Company Name</label>\n                          <input class=\"form-control\" type=\"text\" value=\"{{companyName}}\" readonly>\n                        </div>\n                       </div>\n                       <div class=\"row\">\n                        <div class=\"col-md-12\">\n                          <div class=\"form-group\">\n                            <label for=\"exampleInputEmail1\">Payment Dates</label><br>\n                            <p-calendar formControlName=\"rangeDates\" selectionMode=\"range\" [readonlyInput]=\"true\" inputId=\"range\"></p-calendar>\n\n\n                            <small id=\"rangeDatesHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.rangeDates }}</small>\n                          </div>\n                        </div>\n                      </div>\n\n                       <div class=\"row\">\n                        <div class=\"col-md-12\">\n                          <div class=\"form-group\">\n                            <label for=\"exampleInputEmail1\">Hours</label>\n                            <input type=\"number\" formControlName=\"hours\" class=\"form-control\" placeholder=\"Hours\" required>\n\n                            <div *ngIf=\"hours.invalid && (hours.dirty || hours.touched)\"\n                                    class=\"form-text text-muted\">\n                                  <div *ngIf=\"hours.errors?.required\">\n                                    Amount is required.\n                                  </div>\n\n                            </div>\n\n                            <small id=\"hoursHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.hours }}</small>\n                          </div>\n                        </div>\n                      </div>\n                        <div class=\"row\">\n                          <div class=\"col-md-12\">\n                            <div class=\"form-group\">\n                              <label for=\"exampleInputEmail1\">Amount</label>\n                              <input type=\"number\" formControlName=\"amount\" class=\"form-control\" placeholder=\"Amount\" required>\n\n                              <div *ngIf=\"amount.invalid && (amount.dirty || amount.touched)\"\n                                      class=\"form-text text-muted\">\n                                    <div *ngIf=\"amount.errors?.required\">\n                                      Amount is required.\n                                    </div>\n\n                              </div>\n\n                              <small id=\"amountHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.amount }}</small>\n                            </div>\n                          </div>\n                        </div>\n                        <div class=\"row\">\n                          <div class=\"col-md-12\">\n                            <div class=\"form-group\">\n                              <label for=\"exampleInputEmail1\">Transfer date</label>\n                              <input type=\"date\" formControlName=\"transferDate\" class=\"form-control\" placeholder=\"Amount\" required>\n\n                              <div *ngIf=\"transferDate.invalid && (transferDate.dirty || transferDate.touched)\"\n                                      class=\"form-text text-muted\">\n                                    <div *ngIf=\"transferDate.errors?.required\">\n                                      transferDate is required.\n                                    </div>\n\n                              </div>\n\n                              <small id=\"transferDateHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.transferDate }}</small>\n                            </div>\n                          </div>\n                        </div>\n                        <div class=\"row\">\n                          <div class=\"col-md-12\">\n                            <div class=\"form-group\">\n                              <label for=\"exampleInputEmail1\">Confirmation Number</label>\n                              <input type=\"text\" formControlName=\"confirmationNumber\" class=\"form-control\" placeholder=\"confirmationNumber\" required>\n\n                              <div *ngIf=\"confirmationNumber.invalid && (confirmationNumber.dirty || confirmationNumber.touched)\"\n                                      class=\"form-text text-muted\">\n                                    <div *ngIf=\"confirmationNumber.errors?.required\">\n                                      confirmationNumber is required.\n                                    </div>\n\n                              </div>\n\n                              <small id=\"confirmationNumberHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.confirmationNumber }}</small>\n                            </div>\n                          </div>\n                        </div>\n                        <div class=\"row\">\n                          <div class=\"col-md-12\">\n                              <div class=\"form-group\">\n                              <label>Payment Status</label>\n                              <select class=\"form-control\" formControlName=\"paymentStatus\">\n                                <option value=\"\" selected>--Select--</option>\n                                <option value=\"Paid\" >Paid</option>\n                                <option value=\"Progress\" >Progress</option>\\\n                                <option value=\"To be pay\" > To be pay</option>\n                            </select>\n                            <div *ngIf=\"paymentStatus.invalid && (paymentStatus.dirty || paymentStatus.touched)\"\n                            class=\"form-text text-muted\">\n                          <div *ngIf=\"paymentStatus.errors?.required\">\n                            paymentStatus is required.\n                          </div>\n\n                    </div>\n\n                    <small id=\"paymentStatusHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.paymentStatus }}</small>\n                              </div>\n                          </div>\n                      </div>\n\n                        <div class=\"row\">\n                          <div class=\"update ml-auto mr-auto\">\n                            <button type=\"submit\" class=\"btn btn-primary btn-round\" [disabled]=\"!disableBtn\" [disabled]=\"!registerForm.valid\">Submit</button>\n                          </div>\n                        </div>\n                      </form>\n                  </div>\n                </div>\n              </div>\n</div>\n"
 
 /***/ }),
 
@@ -36,7 +54,7 @@ module.exports = "<div class=\"row\">\n        <div class=\"col-md-12\">\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-md-12\">\n            <h4 class=\"remove-margin\">Edit User Detail </h4>\n            <div class=\"card\">\n              <div class=\"card-header\">\n                <!-- <h5 class=\"card-title\">Edit Profile</h5> -->\n              </div>\n              <div class=\"card-body\">\n                <form [formGroup]=\"updateUser\" (ngSubmit)=\"updateUserDetails()\">\n                  <div class=\"row\">\n                      <div class=\"col-md-12\">\n                          <div class=\"form-group\">\n                            <input type=\"hidden\" name=\"_method\" value=\"PUT\">\n                          <label>First Name</label>\n                          <input type=\"text\" formControlName=\"name\" class=\"form-control\" placeholder=\"First Name\" required>\n                          <div *ngIf=\"name.invalid && (name.dirty || name.touched)\"\n                                  class=\"form-text text-muted\">\n                                <div *ngIf=\"name.errors?.required\">\n                                  Name is required.\n                                </div>\n                                <div *ngIf=\"name.errors?.minlength\">\n                                  Name must be at least 5 characters long.\n                                </div>\n                          </div>\n                          <small id=\"emailHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.name }}</small>\n\n                          </div>\n                      </div>\n                  </div>\n\n                    <div class=\"row\">\n                      <!-- <div class=\"col-md-6 pr-1\">\n                        <div class=\"form-group\">\n                          <label>User Name</label>\n                          <input type=\"text\" class=\"form-control\" placeholder=\"Username\">\n                        </div>\n                      </div> -->\n                      <div class=\"col-md-12\">\n                        <div class=\"form-group\">\n                          <label for=\"exampleInputEmail1\">Email address</label>\n                          <input type=\"email\" formControlName=\"email\" class=\"form-control\" placeholder=\"Email\" required>\n\n                          <div *ngIf=\"email.invalid && (email.dirty || email.touched)\"\n                                  class=\"form-text text-muted\">\n                                <div *ngIf=\"email.errors?.required\">\n                                  Email is required.\n                                </div>\n                                <div *ngIf=\"email.errors?.email\">\n                                  Invalid email address.\n                                </div>\n                          </div>\n\n                          <small id=\"emailHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.email }}</small>\n                        </div>\n                      </div>\n                    </div>\n                    <div class=\"row\">\n                      <div class=\"col-md-12\">\n                          <div class=\"form-group\">\n                          <label>Password</label>\n                          <input type=\"password\" formControlName=\"password\" class=\"form-control\" placeholder=\"Password\" >\n\n                          <div *ngIf=\"password.invalid && (password.dirty || password.touched)\"\n                                  class=\"form-text text-muted\">\n\n                                <div *ngIf=\"password.errors?.minlength\">\n                                  Password must be at least 5 characters long.\n                                </div>\n                          </div>\n\n                          <small id=\"emailHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.password }}</small>\n                          </div>\n                      </div>\n                    </div>\n\n\n                    <div class=\"row\">\n                      <div class=\"update ml-auto mr-auto\">\n                        <button type=\"submit\" class=\"btn btn-primary btn-round\" [disabled]=\"!updateUser.valid\">Update</button>\n                      </div>\n                    </div>\n                  </form>\n              </div>\n            </div>\n          </div>\n</div>\n"
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-12\">\n          <h4 class=\"remove-margin\">Edit </h4>\n          <div class=\"card\">\n            <div class=\"card-header\">\n              <!-- <h5 class=\"card-title\">Edit Profile</h5> -->\n            </div>\n            <div class=\"card-body\">\n              <form [formGroup]=\"registerForm\" (ngSubmit)=\"registerUser()\">\n                <div class=\"row\">\n                    <div class=\"col-md-12\">\n\n                        <label>User Name</label>\n                        <select  (change)=\"firstDropDownChanged()\" tooltipPosition=\"top\" class=\"form-control\" formControlName=\"userId\">\n                          <option value=\"\" selected=\"selected\">--Select Employee--</option>\n                          <option *ngFor=\"let order of users\" [value]=\"order.id\">\n                              {{order.name}} {{order.lastName}}</option>\n                      </select>\n\n\n                    </div>\n                </div>\n\n                <div class=\"row\" *ngIf=\"rate\">\n                  <div class=\"col-md-12\">\n                    <label>Rate</label>\n                    <input class=\"form-control\" type=\"number\" value=\"{{rate}}\" readonly>\n\n                  </div>\n                 </div>\n                 <div class=\"row\" *ngIf=\"companyName\">\n                  <div class=\"col-md-12\">\n                    <label>Company Name</label>\n                    <input class=\"form-control\" type=\"text\" value=\"{{companyName}}\" readonly>\n                  </div>\n                 </div>\n                 <div class=\"row\">\n                  <div class=\"col-md-12\">\n                    <div class=\"form-group\">\n                      <label for=\"exampleInputEmail1\">Payment Dates : </label><br>\n                      <p-calendar formControlName=\"rangeDates\" selectionMode=\"range\" [readonlyInput]=\"true\" inputId=\"range\"></p-calendar>\n\n\n                      <small id=\"rangeDatesHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.rangeDates }}</small>\n                    </div>\n                  </div>\n                </div>\n\n                 <div class=\"row\">\n                  <div class=\"col-md-12\">\n                    <div class=\"form-group\">\n                      <label for=\"exampleInputEmail1\">Hours</label>\n                      <input type=\"number\" formControlName=\"hours\" class=\"form-control\" placeholder=\"Hours\" required>\n\n                      <div *ngIf=\"hours.invalid && (hours.dirty || hours.touched)\"\n                              class=\"form-text text-muted\">\n                            <div *ngIf=\"hours.errors?.required\">\n                              Amount is required.\n                            </div>\n\n                      </div>\n\n                      <small id=\"hoursHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.hours }}</small>\n                    </div>\n                  </div>\n                </div>\n                  <div class=\"row\">\n                    <div class=\"col-md-12\">\n                      <div class=\"form-group\">\n                        <label for=\"exampleInputEmail1\">Amount</label>\n                        <input type=\"number\" formControlName=\"amount\" class=\"form-control\" placeholder=\"Amount\" required>\n\n                        <div *ngIf=\"amount.invalid && (amount.dirty || amount.touched)\"\n                                class=\"form-text text-muted\">\n                              <div *ngIf=\"amount.errors?.required\">\n                                Amount is required.\n                              </div>\n\n                        </div>\n\n                        <small id=\"amountHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.amount }}</small>\n                      </div>\n                    </div>\n                  </div>\n                  <div class=\"row\">\n                    <div class=\"col-md-12\">\n                      <div class=\"form-group\">\n                        <label for=\"exampleInputEmail1\">Transfer date</label>\n                        <input type=\"date\" formControlName=\"transferDate\" class=\"form-control\" placeholder=\"Amount\" required>\n\n                        <div *ngIf=\"transferDate.invalid && (transferDate.dirty || transferDate.touched)\"\n                                class=\"form-text text-muted\">\n                              <div *ngIf=\"transferDate.errors?.required\">\n                                transferDate is required.\n                              </div>\n\n                        </div>\n\n                        <small id=\"transferDateHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.transferDate }}</small>\n                      </div>\n                    </div>\n                  </div>\n                  <div class=\"row\">\n                    <div class=\"col-md-12\">\n                      <div class=\"form-group\">\n                        <label for=\"exampleInputEmail1\">Confirmation Number</label>\n                        <input type=\"text\" formControlName=\"confirmationNumber\" class=\"form-control\" placeholder=\"confirmationNumber\" required>\n\n                        <div *ngIf=\"confirmationNumber.invalid && (confirmationNumber.dirty || confirmationNumber.touched)\"\n                                class=\"form-text text-muted\">\n                              <div *ngIf=\"confirmationNumber.errors?.required\">\n                                confirmationNumber is required.\n                              </div>\n\n                        </div>\n\n                        <small id=\"confirmationNumberHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.confirmationNumber }}</small>\n                      </div>\n                    </div>\n                  </div>\n                  <div class=\"row\">\n                    <div class=\"col-md-12\">\n                        <div class=\"form-group\">\n                        <label>Payment Status</label>\n                        <select class=\"form-control\" formControlName=\"paymentStatus\">\n                          <option value=\"\" selected>--Select--</option>\n                          <option value=\"Paid\" >Paid</option>\n                          <option value=\"Progress\" >Progress</option>\\\n                          <option value=\"To be pay\" > To be pay</option>\n                      </select>\n                      <div *ngIf=\"paymentStatus.invalid && (paymentStatus.dirty || paymentStatus.touched)\"\n                      class=\"form-text text-muted\">\n                    <div *ngIf=\"paymentStatus.errors?.required\">\n                      paymentStatus is required.\n                    </div>\n\n              </div>\n\n              <small id=\"paymentStatusHelp\" class=\"form-text text-muted\" *ngIf=\"serverErrors\">{{ serverErrors.paymentStatus }}</small>\n                        </div>\n                    </div>\n                </div>\n\n                  <div class=\"row\">\n                    <div class=\"update ml-auto mr-auto\">\n                      <button type=\"submit\" class=\"btn btn-primary btn-round\" [disabled]=\"!disableBtn\" [disabled]=\"!registerForm.valid\">Submit</button>\n                    </div>\n                  </div>\n                </form>\n            </div>\n          </div>\n        </div>\n</div>\n"
 
 /***/ }),
 
@@ -58,7 +76,7 @@ module.exports = "\n\n<div class=\"row\">\n    <div class=\"col-md-12\">\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-12\">\r\n          <h4 class=\"remove-margin\">Employee Payments </h4>\r\n    <div class=\"card\">\r\n      <div class=\"card-header\">\r\n        <!-- <div class=\"float-right\"> -->\r\n          <a routerLink=\"/payments/create\" class=\"btn btn-info btn-sm\">Add Payment</a>\r\n        <!-- </div> -->\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <p-table #dt [value]=\"timeSheets\" dataKey=\"id\"\r\n        [rows]=\"10\" [showCurrentPageReport]=\"true\" [rowsPerPageOptions]=\"[6,12]\" [loading]=\"loading\" styleClass=\"p-datatable-customers\"\r\n        [paginator]=\"false\"\r\n        [filterDelay]=\"0\" [globalFilterFields]=\"['amount','transferDate','confirmationNumber','paymentStatus']\">\r\n\r\n        <ng-template pTemplate=\"header\">\r\n            <tr>\r\n                <th>Name</th>\r\n                <th>Hours</th>\r\n                <th>Amount</th>\r\n                <th>Transfer Date</th>\r\n                <th>Confirmation Number</th>\r\n                <th>Status</th>\r\n\r\n            </tr>\r\n\r\n        </ng-template>\r\n        <ng-template pTemplate=\"body\" let-customer>\r\n            <tr>\r\n              <td>\r\n                {{customer.user_details.name}}\r\n              </td>\r\n              <td>\r\n                {{customer.hours}}\r\n              </td>\r\n              <td>\r\n                ${{customer.amount}}\r\n              </td>\r\n                <td>\r\n                    {{customer.transferDate | date}}\r\n                </td>\r\n                <td>\r\n                   {{customer.confirmationNumber}}\r\n                </td>\r\n                <td>\r\n                  {{customer.paymentStatus}}\r\n               </td>\r\n\r\n            </tr>\r\n        </ng-template>\r\n        <ng-template pTemplate=\"emptymessage\">\r\n            <tr>\r\n                <td colspan=\"6\">No Payments found.</td>\r\n            </tr>\r\n        </ng-template>\r\n    </p-table>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<p-inplace >\r\n  <ng-template pTemplate=\"display\">\r\n      Click to Edit\r\n  </ng-template>\r\n  <ng-template pTemplate=\"content\">\r\n      <input type=\"text\" value=\"PrimeNG\" pInputText>\r\n  </ng-template>\r\n</p-inplace>\r\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-12\">\r\n          <h4 class=\"remove-margin\">Employee Payments </h4>\r\n    <div class=\"card\">\r\n      <div class=\"card-header\">\r\n        <!-- <div class=\"float-right\"> -->\r\n          <a routerLink=\"/payments/create\" class=\"btn btn-info btn-sm\">Add Payment</a>\r\n        <!-- </div> -->\r\n      </div>\r\n      <div class=\"card-body\">\r\n        <p-table #dt [value]=\"timeSheets\" dataKey=\"id\"\r\n        [rows]=\"10\" [showCurrentPageReport]=\"true\" [rowsPerPageOptions]=\"[6,12]\" [loading]=\"loading\" styleClass=\"p-datatable-customers\"\r\n        [paginator]=\"false\"\r\n        [filterDelay]=\"0\" [globalFilterFields]=\"['amount','transferDate','confirmationNumber','paymentStatus']\">\r\n\r\n        <ng-template pTemplate=\"header\">\r\n            <tr>\r\n                <th>Name</th>\r\n                <th>Hours</th>\r\n                <th>Amount</th>\r\n                <th>Transfer Date</th>\r\n                <th>From - To Dates</th>\r\n                <th>Confirmation Number</th>\r\n                <th>Status</th>\r\n                <th>Action</th>\r\n            </tr>\r\n\r\n        </ng-template>\r\n        <ng-template pTemplate=\"body\" let-customer>\r\n            <tr>\r\n              <td>\r\n                {{customer.user_details.name}}  {{customer.user_details.lastName}}\r\n              </td>\r\n              <td>\r\n                {{customer.hours}}\r\n              </td>\r\n              <td>\r\n                ${{customer.amount}}\r\n              </td>\r\n                <td>\r\n                    {{customer.transferDate | date}}\r\n                </td>\r\n                <td>\r\n                  {{customer.fromDate | date}} - {{customer.toDate | date}}\r\n                </td>\r\n                <td>\r\n                   {{customer.confirmationNumber}}\r\n                </td>\r\n                <td>\r\n                  {{customer.paymentStatus}}\r\n               </td>\r\n               <td>\r\n                <a (click)=\"editUser(customer.paymentId)\"  class=\"btn btn-warning btn-sm\"><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></a>\r\n                <a (click)=\"viewUser(customer.paymentId)\"  class=\"btn btn-warning btn-sm\"><i class=\"fa fa-download\" aria-hidden=\"true\"></i></a>\r\n\r\n               </td>\r\n\r\n            </tr>\r\n        </ng-template>\r\n        <ng-template pTemplate=\"emptymessage\">\r\n            <tr>\r\n                <td colspan=\"6\">No Payments found.</td>\r\n            </tr>\r\n        </ng-template>\r\n    </p-table>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<p-inplace >\r\n  <ng-template pTemplate=\"display\">\r\n      Click to Edit\r\n  </ng-template>\r\n  <ng-template pTemplate=\"content\">\r\n      <input type=\"text\" value=\"PrimeNG\" pInputText>\r\n  </ng-template>\r\n</p-inplace>\r\n"
 
 /***/ }),
 
@@ -111,7 +129,8 @@ var UserCreateComponent = /** @class */ (function () {
             'hours': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
             'transferDate': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
             'confirmationNumber': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            'paymentStatus': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]("", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required])
+            'paymentStatus': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]("", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'rangeDates': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]("", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
         });
     };
     Object.defineProperty(UserCreateComponent.prototype, "userId", {
@@ -141,6 +160,11 @@ var UserCreateComponent = /** @class */ (function () {
     });
     Object.defineProperty(UserCreateComponent.prototype, "confirmationNumber", {
         get: function () { return this.registerForm.get('confirmationNumber'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(UserCreateComponent.prototype, "rangeDates", {
+        get: function () { return this.registerForm.get('rangeDates'); },
         enumerable: true,
         configurable: true
     });
@@ -204,8 +228,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _user_rest_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user-rest.service */ "./src/app/admin/payments/user-rest.service.ts");
+/* harmony import */ var _user_rest_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user-rest.service */ "./src/app/admin/payments/user-rest.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 
 
 
@@ -217,59 +241,98 @@ var UserEditComponent = /** @class */ (function () {
         this.userRest = userRest;
         this.router = router;
         this.serverErrors = [];
+        this.users = [];
+        this.disableBtn = false;
     }
     UserEditComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.userRest.getUsers().subscribe(function (response) { console.log(_this.users = response.user); }, function (error) { console.log(error); });
         var id = this.route.snapshot.params.id;
         this.userRest.editUser(id).subscribe(function (response) {
-            _this.updateUser.patchValue({
-                'name': response.user.name,
-                'email': response.user.email
+            console.log(response);
+            _this.registerForm.patchValue({
+                'userId': response.payment.userId,
+                'amount': response.payment.amount,
+                'hours': response.payment.hours,
+                'transferDate': response.payment.transferDate,
+                'confirmationNumber': response.payment.confirmationNumber,
+                'paymentStatus': response.payment.paymentStatus
             });
         }, function (error) { return console.log(error); });
-        console.log(this.data);
-        this.updateUser = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
-            'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].minLength(5)]),
-            'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].email]),
-            'password': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null),
+        this.registerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
+            'userId': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]("", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'amount': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'hours': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'transferDate': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'confirmationNumber': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'paymentStatus': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]("", [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'rangeDates': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](""),
         });
     };
-    Object.defineProperty(UserEditComponent.prototype, "name", {
-        get: function () { return this.updateUser.get('name'); },
+    Object.defineProperty(UserEditComponent.prototype, "userId", {
+        get: function () { return this.registerForm.get('userId'); },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(UserEditComponent.prototype, "email", {
-        get: function () { return this.updateUser.get('email'); },
+    Object.defineProperty(UserEditComponent.prototype, "amount", {
+        get: function () { return this.registerForm.get('amount'); },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(UserEditComponent.prototype, "password", {
-        get: function () { return this.updateUser.get('password'); },
+    Object.defineProperty(UserEditComponent.prototype, "hours", {
+        get: function () { return this.registerForm.get('hours'); },
         enumerable: true,
         configurable: true
     });
-    UserEditComponent.prototype.updateUserDetails = function () {
+    Object.defineProperty(UserEditComponent.prototype, "transferDate", {
+        get: function () { return this.registerForm.get('transferDate'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(UserEditComponent.prototype, "paymentStatus", {
+        get: function () { return this.registerForm.get('paymentStatus'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(UserEditComponent.prototype, "confirmationNumber", {
+        get: function () { return this.registerForm.get('confirmationNumber'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(UserEditComponent.prototype, "rangeDates", {
+        get: function () { return this.registerForm.get('rangeDates'); },
+        enumerable: true,
+        configurable: true
+    });
+    UserEditComponent.prototype.registerUser = function () {
         var _this = this;
+        console.log(this.registerForm);
         var id = this.route.snapshot.params.id;
-        this.userRest.updateUser(this.updateUser, id).subscribe(function (response) {
+        this.userRest.updatePayment(this.registerForm, id).subscribe(function (response) {
             console.log(response),
-                _this.router.navigate(['users/list']);
+                _this.router.navigate(['payments/list']);
         }, function (error) {
             _this.serverErrors = error.error.errors;
-        }, function () { return console.log('completed'); });
+        });
     };
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], UserEditComponent.prototype, "data", void 0);
+    UserEditComponent.prototype.firstDropDownChanged = function () {
+        var _this = this;
+        if (this.registerForm.value.userId) {
+            this.userRest.editUser(this.registerForm.value.userId).subscribe(function (response) {
+                console.log(response.user);
+                _this.rate = response.user.rate;
+                _this.companyName = response.user.companyName;
+            }, function (error) { return console.log(error); });
+        }
+        // console.log(this.selectedValue);
+    };
     UserEditComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-user-edit',
             template: __webpack_require__(/*! raw-loader!./user-edit.component.html */ "./node_modules/raw-loader/index.js!./src/app/admin/payments/user-edit/user-edit.component.html"),
             styles: [__webpack_require__(/*! ./user-edit.component.scss */ "./src/app/admin/payments/user-edit/user-edit.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _user_rest_service__WEBPACK_IMPORTED_MODULE_4__["UserRestService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _user_rest_service__WEBPACK_IMPORTED_MODULE_3__["UserRestService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], UserEditComponent);
     return UserEditComponent;
 }());
@@ -421,7 +484,7 @@ var UserListComponent = /** @class */ (function () {
         }
     };
     UserListComponent.prototype.editUser = function (id) {
-        this.router.navigate(['users/edit', id]);
+        this.router.navigate(['payments/edit', id]);
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('dt', { static: true }),
@@ -477,10 +540,10 @@ var UserRestService = /** @class */ (function () {
         return this.http.get('https://employees.webmobilez.com/public/api/user-list');
     };
     UserRestService.prototype.editUser = function (id) {
-        return this.http.get('https://employees.webmobilez.com/public/api/user-list/' + id);
+        return this.http.get('https://employees.webmobilez.com/public/api/payment-list/' + id);
     };
-    UserRestService.prototype.updateUser = function (form, id) {
-        return this.http.put('https://employees.webmobilez.com/public/api/user-list/' + id, form.value);
+    UserRestService.prototype.updatePayment = function (form, id) {
+        return this.http.put('https://employees.webmobilez.com/public/api/payment-list/' + id, form.value);
     };
     UserRestService.prototype.storePayment = function (form) {
         return this.http.post('https://employees.webmobilez.com/public/api/payment-list', form.value);
@@ -609,7 +672,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var primeng_tooltip__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(primeng_tooltip__WEBPACK_IMPORTED_MODULE_20__);
 /* harmony import */ var primeng_fileupload__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! primeng/fileupload */ "./node_modules/primeng/fileupload.js");
 /* harmony import */ var primeng_fileupload__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(primeng_fileupload__WEBPACK_IMPORTED_MODULE_21__);
-/* harmony import */ var angular_calendar__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! angular-calendar */ "./node_modules/angular-calendar/fesm5/angular-calendar.js");
+/* harmony import */ var primeng_calendar__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! primeng/calendar */ "./node_modules/primeng/calendar.js");
+/* harmony import */ var primeng_calendar__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(primeng_calendar__WEBPACK_IMPORTED_MODULE_22__);
 /* harmony import */ var ngx_dropzone__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ngx-dropzone */ "./node_modules/ngx-dropzone/fesm5/ngx-dropzone.js");
 /* harmony import */ var primeng_dropdown__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! primeng/dropdown */ "./node_modules/primeng/dropdown.js");
 /* harmony import */ var primeng_dropdown__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(primeng_dropdown__WEBPACK_IMPORTED_MODULE_24__);
@@ -651,7 +715,7 @@ var UserModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _user_routing_module__WEBPACK_IMPORTED_MODULE_3__["UserRoutingModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"], primeng_table__WEBPACK_IMPORTED_MODULE_10__["TableModule"], primeng_primeng__WEBPACK_IMPORTED_MODULE_11__["MultiSelectModule"], angular_calendar__WEBPACK_IMPORTED_MODULE_22__["CalendarModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"], primeng_table__WEBPACK_IMPORTED_MODULE_10__["TableModule"], primeng_primeng__WEBPACK_IMPORTED_MODULE_11__["MultiSelectModule"], primeng_calendar__WEBPACK_IMPORTED_MODULE_22__["CalendarModule"],
                 primeng_slider__WEBPACK_IMPORTED_MODULE_13__["SliderModule"],
                 primeng_dialog__WEBPACK_IMPORTED_MODULE_15__["DialogModule"],
                 primeng_primeng__WEBPACK_IMPORTED_MODULE_11__["MultiSelectModule"],
