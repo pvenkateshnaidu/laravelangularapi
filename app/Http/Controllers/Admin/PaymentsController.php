@@ -85,16 +85,16 @@ class PaymentsController extends Controller
     }
     public function update(Request $request, $id)
     {
-        if($request->rangeDates[0])
+        if($request->rangeDates)
         $fromdate=Carbon::parse($request->rangeDates[0])->addDay(1)->toDateTimeString();
-        if($request->rangeDates[1])
+        if($request->rangeDates)
         $toDate=Carbon::parse($request->rangeDates[1])->addDay(1)->toDateTimeString();
         $user            = Payments::find($id);
         if($request->amount)
         $user->amount  = $request->amount;
-        if($request->rangeDates[0])
+        if($request->rangeDates)
         $user->fromDate  = $request->rangeDates[0];
-        if($request->rangeDates[1])
+        if($request->rangeDates)
         $user->toDate  = $request->rangeDates[1];
         if($request->hours)
         $user->hours  = $request->hours;
