@@ -27,12 +27,13 @@ class InvoicesController extends Controller
      if(Auth::user()->role=='Admin')
      {
         $timesheet = Invoices::with('user_details')
-
+            ->where('invoiceStatus','=','A')
            ->orderBy('created_at', 'DESC')
            ->get();
      }else{
         $timesheet = Invoices::with('user_details')
         ->where('userId','=',Auth::user()->id)
+        ->where('invoiceStatus','=','A')
            ->orderBy('created_at', 'DESC')
            ->get();
      }

@@ -18,7 +18,7 @@ class Invoices extends Model
 	protected $primaryKey = 'invoiceId';
 
 	protected $fillable = [
-		'date','services','hours','rate','printName','amount','signature','invoiceNumber','userId','signature'
+		'invoiceStatus','date','services','hours','rate','printName','amount','signature','invoiceNumber','userId','signature'
 	];
     public function user_details()
     {
