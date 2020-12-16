@@ -23,7 +23,7 @@ class AdminTimeSheetsController extends Controller
     {
         //
 
-        $timesheet = TimeSheet::with('user_details')->orderBy('fromDate', 'ASC')
+        $timesheet = TimeSheet::with('user_details')->orderBy('fromDate', 'DESC')
         ->get();
         return response()->json(['timesheet' => $timesheet ], 200);
     }
