@@ -88,6 +88,9 @@ class UserListController extends Controller
         $joindate ='';
         if($request->joinDate)
         $joindate = $request->joinDate;
+        $address1 ='';
+        if($request->address1)
+        $address1 = $request->address1;
         $user = User::create([
             'name' => $request->name,
             'lastName' =>$request->lastName,
@@ -97,7 +100,7 @@ class UserListController extends Controller
             'rate' => $request->rate,
             'role' => $request->role,
             'address' => $request->address,
-            'address1' => $request->address1,
+            'address1' => $address1,
             'zipcode' => $request->zipcode,
             'city' => $request->city,
             'state' => $request->state,
