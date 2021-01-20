@@ -11,13 +11,13 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Payments extends Model
+class UserDocuments extends Model
 {
-	protected $table = 'payments';
-	protected $primaryKey = 'paymentId';
+	protected $table = 'userdocuments';
+	protected $primaryKey = 'userDocumentId';
 
 	protected $fillable = [
-		'amount','transferDate','confirmationNumber','paymentStatus','userId','hours' ,'fromDate','toDate','type'
+		'documentType','documentFile','userId'
 	];
     public function user_details()
     {

@@ -32,7 +32,8 @@ class AdminDocumentsController extends Controller
     {
 
 
-        $timesheet = TimeSheetDocuments::with('user_details')->orderBy('dateOfWeek', 'ASC')
+        $timesheet = TimeSheetDocuments::with('user_details')
+        ->orderBy('dateOfWeek', 'DESC')
         ->get();
 
 

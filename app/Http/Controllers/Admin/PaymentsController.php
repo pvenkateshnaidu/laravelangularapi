@@ -33,6 +33,7 @@ class PaymentsController extends Controller
         {
             $timesheet = Payments::with('user_details')
             ->where('userId','=',Auth::user()->id)
+            ->where('type','=','D')
             ->orderBy('created_at', 'DESC')
             ->get();
         }
@@ -58,6 +59,7 @@ class PaymentsController extends Controller
             'paymentStatus' => $request->paymentStatus,
             'fromDate' => $fromdate,
             'toDate' => $toDate,
+            'type' =>$request->type,
             'created_at' => Carbon::now()
         ]);
 
@@ -70,6 +72,16 @@ class PaymentsController extends Controller
 
        $currentUser =Auth::user();
         return response()->json(['payment' =>$user,"user"=>$currentUser], 200);
+    }
+    public function getpaymentbyuserId(Request $request)
+    {
+
+        $user = Payments::with('user_details')
+        ->where('userId','=',$request->userId)
+        ->get();
+
+       $currentUser =Auth::user();
+        return response()->json(['payments' => $user,"user"=>$currentUser], 200);
     }
  /**
      * Show the form for editing the specified resource.
@@ -104,6 +116,8 @@ class PaymentsController extends Controller
         $user->confirmationNumber  = $request->confirmationNumber;
         if($request->userId)
         $user->userId  = $request->userId;
+        if($request->type)
+        $user->type  = $request->type;
         if($request->paymentStatus)
         $user->paymentStatus  = $request->paymentStatus;
         $user->save();

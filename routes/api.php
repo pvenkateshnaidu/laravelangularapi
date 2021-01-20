@@ -31,6 +31,8 @@ Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'admin'], func
 
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
     Route::resource('user-list', 'UserListController');
+    Route::get('data-list', 'UserListController@dataList');
+
 });
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
     Route::get('get-user-data', 'UserListController@getCurrentUserData');
@@ -38,6 +40,9 @@ Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], func
 
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
     Route::resource('payment-list', 'PaymentsController');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::get('getpayment-by-userid', 'PaymentsController@getpaymentbyuserId');
 });
 
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
@@ -62,4 +67,23 @@ Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], func
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
     Route::get('get-count-invoice-list', 'InvoicesController@getCount');
 });
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::get('getschedules', 'UserListController@getschedules');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::get('getLoadTimeSheetuserw', 'UserListController@getLoadTimeSheetuserw');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::post('saveUserDocument', 'UserDocumentsController@saveDocument');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::resource('user-documents-list', 'UserDocumentsController');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::get('placed-employee-list', 'UserListController@getPlacedEmployees');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::resource('edit-consultant-User', 'ConsultantController');
+});
+
 
