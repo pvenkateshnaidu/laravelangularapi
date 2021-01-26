@@ -59,6 +59,9 @@ Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], func
     Route::get('getAllTimesheets', 'AdminTimeSheetsController@index');
 });
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::get('getUsersbytimesheet', 'AdminTimeSheetsController@dataList');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
     Route::get('getAllDocuments', 'AdminDocumentsController@index');
 });
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
@@ -85,5 +88,16 @@ Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], func
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
     Route::resource('edit-consultant-User', 'ConsultantController');
 });
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::get('placed-employee-list', 'UserListController@getPlacedEmployees');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::get('gettimesheets-by-userid', 'AdminTimeSheetsController@getTimesheetsbyuserId');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::resource('faqs', 'FaqController');
+});
 
-
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::get('getdocuments-by-userid', 'AdminDocumentsController@getTimesheetsbyuserId');
+});

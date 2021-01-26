@@ -95,10 +95,14 @@ class UserListController extends Controller
             'name' => $request->name,
             'lastName' =>$request->lastName,
             'companyName' => $request->companyName,
+          //  'companyEmail' => $request->companyEmail,
+       //     'emergencyNumber' => $request->emergencyNumber,
+          //  'emergencyRelationNumber' => $request->emergencyRelationNumber,
             'joinDate' => $joindate,
             'technology' => $request->technology,
             'rate' => $request->rate,
             'role' => $request->role,
+
             'address' => $request->address,
             'address1' => $address1,
             'zipcode' => $request->zipcode,
@@ -168,6 +172,14 @@ class UserListController extends Controller
             $user->lastName  = $request->lastName;
             if($request->companyName)
             $user->companyName  = $request->companyName;
+            if($request->contactNumber)
+            $user->contactNumber  = $request->contactNumber;
+            if($request->companyEmail)
+            $user->companyEmail  = $request->companyEmail;
+            if($request->emergencyNumber)
+            $user->emergencyNumber  = $request->emergencyNumber;
+            if($request->emergencyRelationNumber)
+            $user->emergencyRelationNumber  = $request->emergencyRelationNumber;
             if($request->joinDate)
             $user->joinDate  = $request->joinDate;
             if($request->technology)

@@ -43,8 +43,14 @@ class TimeSheetController extends Controller
             'userId' => Auth::user()->id,
             'serviceCode' => "Regular"
         ]);
+        $from= Carbon::parse($request->date)->startOfWeek(Carbon::SUNDAY)->format('Y-m-d');
+        $to= Carbon::parse($request->date)->endOfWeek(Carbon::SATURDAY)->format('Y-m-d');
+        $timesheet = TimeSheet::whereBetween('fromDate', [ $from,$to])
+        ->where('userId','=',Auth::user()->id)
+        ->orderBy('fromDate', 'ASC')
+        ->get();
+    return response()->json(['timesheet' => $timesheet,'user' => "TimeSheet Created Successfully" ], 200);
 
-        return response()->json(['user' => "TimeSheet Created Successfully"], 200);
     }
     public function show($id)
     {
