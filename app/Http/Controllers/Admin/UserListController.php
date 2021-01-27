@@ -178,8 +178,10 @@ class UserListController extends Controller
             $user->companyEmail  = $request->companyEmail;
             if($request->emergencyNumber)
             $user->emergencyNumber  = $request->emergencyNumber;
-            if($request->emergencyRelationNumber)
-            $user->emergencyRelationNumber  = $request->emergencyRelationNumber;
+            if($request->emrgencyContactPerson)
+            $user->emrgencyContactPerson  = $request->emrgencyContactPerson;
+            if($request->relationContactPerson)
+            $user->relationContactPerson  = $request->relationContactPerson;
             if($request->joinDate)
             $user->joinDate  = $request->joinDate;
             if($request->technology)
