@@ -11,14 +11,13 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 
-class CompanyInvoices extends Model
+class VendorRates extends Model
 {
-
-	protected $table = 'admininvoices';
+	protected $table = 'vendor_rates';
 	protected $primaryKey = 'id';
 
 	protected $fillable = [
-		'clientName','invoiceNumber','invoiceDate','paymentDuedate','suppliersName','suppliersAddress','description','quantity','rate','amount','name'
+		'rate','userId'
 	];
     public function user_details()
     {

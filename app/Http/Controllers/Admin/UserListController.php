@@ -9,6 +9,7 @@ use App\Model\Submissions;
 use App\Model\Consultants;
 use Auth;
 use App\TimeSheet;
+use App\VendorRates;
 use App\UserDocuments;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,7 @@ class UserListController extends Controller
     public function index()
     {
         //
-        $user = User::get();
+        $user = User::where('userStatus','=','A')->get();
         return response()->json(['user' => $user], 200);
     }
      /**
@@ -41,12 +42,21 @@ class UserListController extends Controller
         $user = User::get();
         return response()->json(['user' => $user], 200);
     }
+    public function  allEmployees()
+    {
+        if(Auth::user()->role=='Admin')
+        {
+        $user = User::whereNotIn('role', ['Admin','Consultant'])->where('userStatus','=','A')->get();
+        $schedule = Submissions::where('reportId','=',Auth::user()->reportId)->get();
+        return response()->json(['user' => $user,'schedules'=>$schedule], 200);
+        }
+    }
     public function dataList()
     {
         //
         if(Auth::user()->role=='Admin')
         {
-        $user = User::where('role','=','User')->get();
+        $user = User::where('role','=','User')->where('userStatus','=','A')->get();
         $schedule = Submissions::where('reportId','=',Auth::user()->reportId)->get();
         return response()->json(['user' => $user,'schedules'=>$schedule], 200);
         }else{
@@ -128,7 +138,14 @@ class UserListController extends Controller
     {
         //
         $user = User::find($id);
-        return response()->json(['user' => $user], 200);
+        $actualRate = 0;
+        if(Auth::user()->role=='Admin')
+        {
+            $findactualRate = VendorRates::where('userId','=',$id)->first();
+            if($findactualRate)
+            $actualRate = $findactualRate->rate;
+        }
+        return response()->json(['user' => $user,'actualrate'=> $actualRate], 200);
     }
 
     /**
@@ -141,7 +158,13 @@ class UserListController extends Controller
     {
         //
         $user = User::find($id);
-        return response()->json(['user' => $user], 200);
+        $actualRate = 0;
+        if(Auth::user()->role=='Admin')
+        {
+            $findactualRate = VendorRates::where('userId','=',$id)->first();
+            $actualRate = $findactualRate->rate;
+        }
+        return response()->json(['user' => $user,'actualrate'=> $actualRate], 200);
     }
     public function editconsultantUser($id)
     {
@@ -235,8 +258,12 @@ class UserListController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $user->delete();
-        return response()->json(['user' => $user,'message' => 'User Deleted Successfully'], 200);
+        $user->userStatus  = 'D';
+        $user->save();
+      //  $user->delete();
+      $user = User::where('userStatus','=','A')->get();
+      return response()->json(['user' => $user,'message' => 'User Deleted Successfully'], 200);
+      //  return response()->json(['user' => $user,'message' => 'User Deleted Successfully'], 200);
     }
     public function getUserDetails()
     {

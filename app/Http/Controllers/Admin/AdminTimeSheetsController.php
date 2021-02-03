@@ -35,7 +35,7 @@ class AdminTimeSheetsController extends Controller
     {
         //
         if (Auth::user()->role == 'Admin') {
-            $user = User::where('role', '!=', 'Admin')->get();
+            $user = User::where('role', '!=', 'Admin')->where('userStatus', '=', 'A')->get();
 
             return response()->json(['user' => $user], 200);
         } else {

@@ -35,14 +35,27 @@ class TimeSheetController extends Controller
             'duration' => 'required',
             'date' => 'unique:employeetimesheet,fromDate,NULL,timeSheetId,userId,'.Auth::user()->id
         ]);
+if($request->groupname =='leave')
+{
+    $user = TimeSheet::create([
+        'duration' => 0,
+        'timeSheetType' => 'leave',
+        'fromDate' => $request->date,
+        'assignment' => $request->assignment,
+        'userId' => Auth::user()->id,
+        'serviceCode' => "Regular"
+    ]);
 
-        $user = TimeSheet::create([
-            'duration' => $request->duration,
-            'fromDate' => $request->date,
-            'assignment' => $request->assignment,
-            'userId' => Auth::user()->id,
-            'serviceCode' => "Regular"
-        ]);
+}else{
+    $user = TimeSheet::create([
+        'duration' => $request->duration,
+        'fromDate' => $request->date,
+        'assignment' => $request->assignment,
+        'userId' => Auth::user()->id,
+        'serviceCode' => "Regular"
+    ]);
+}
+
         $from= Carbon::parse($request->date)->startOfWeek(Carbon::SUNDAY)->format('Y-m-d');
         $to= Carbon::parse($request->date)->endOfWeek(Carbon::SATURDAY)->format('Y-m-d');
         $timesheet = TimeSheet::whereBetween('fromDate', [ $from,$to])

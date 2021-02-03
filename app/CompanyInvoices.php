@@ -11,13 +11,14 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 
-class TimeSheet extends Model
+class CompanyInvoices extends Model
 {
-	protected $table = 'employeetimesheet';
-	protected $primaryKey = 'timeSheetId';
+
+	protected $table = 'admininvoices';
+	protected $primaryKey = 'id';
 
 	protected $fillable = [
-		'duration','fromDate','assignment','serviceCode','userId','timeSheetType'
+		'userId','clientName','invoiceNumber','invoiceDate','paymentDuedate','suppliersName','suppliersAddress','description','quantity','rate','amount','name'
 	];
     public function user_details()
     {

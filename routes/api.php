@@ -71,6 +71,9 @@ Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], func
     Route::get('get-count-invoice-list', 'InvoicesController@getCount');
 });
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::get('get-count-company-invoice-list', 'AdminCompanyInvoicesController@getCount');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
     Route::get('getschedules', 'UserListController@getschedules');
 });
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
@@ -101,3 +104,13 @@ Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], func
 Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
     Route::get('getdocuments-by-userid', 'AdminDocumentsController@getTimesheetsbyuserId');
 });
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::get('all-employee-list', 'UserListController@allEmployees');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::resource('admin-company-invoices', 'AdminCompanyInvoicesController');
+});
+Route::group(['middleware' => ['cors','auth:api'], 'namespace' => 'Admin'], function () {
+    Route::resource('vendorrates', 'VendorRatesController');
+});
+

@@ -33,9 +33,16 @@ class AdminDocumentsController extends Controller
     public function index()
     {
 
+        $duplicateIds = DB::table("timesheetdocuments")
+        ->selectRaw("min(documentId) as documentId")
+        ->groupBy("dateOfWeek", "userId")
+        ->havingRaw('count(documentId) > ?', [1])
+        ->pluck("documentId");
 
         $timesheet = TimeSheetDocuments::with('user_details')
+        ->whereNotIn("documentId", $duplicateIds)
         ->orderBy('dateOfWeek', 'DESC')
+      //  ->groupBy('dateOfWeek', 'userId')
         ->get();
 
 
@@ -54,11 +61,17 @@ class AdminDocumentsController extends Controller
             $MyObject->endWeek =$to;
             $MyObjects[] = $MyObject;
         }
-        return response()->json(['documents' => $MyObjects ], 200);
+        return response()->json(['documents' => $MyObjects,'ids'=>$duplicateIds], 200);
     }
     public function getTimesheetsbyuserId(Request $request)
     {
         // return response()->json(['timesheets' => $request->get('date')], 200);
+        $duplicateIds = DB::table("timesheetdocuments")
+        ->selectRaw("min(documentId) as documentId")
+        ->groupBy("dateOfWeek", "userId")
+        ->havingRaw('count(documentId) > ?', [1])
+        ->pluck("documentId");
+
         $getHours = 0;
         if ($request->userId) {
 
@@ -69,7 +82,7 @@ class AdminDocumentsController extends Controller
                         $query->whereMonth('dateOfWeek', '=', \Carbon\Carbon::parse($request->get('date'))->format('m'));
                     }
                 })
-
+                ->whereNotIn("documentId", $duplicateIds)
                 ->where('userId', '=', $request->userId)
                 ->orderBy('dateOfWeek', 'DESC')
                 ->get();
@@ -102,6 +115,7 @@ class AdminDocumentsController extends Controller
 
         } else {
                     $timesheet = TimeSheetDocuments::with('user_details')
+                    ->whereNotIn("documentId", $duplicateIds)
                     ->orderBy('dateOfWeek', 'DESC')
                     ->get();
 
