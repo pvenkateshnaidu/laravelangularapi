@@ -60,7 +60,9 @@ class UserListController extends Controller
         $schedule = Submissions::where('reportId','=',Auth::user()->reportId)->get();
         return response()->json(['user' => $user,'schedules'=>$schedule], 200);
         }else{
-            return response()->json(['user' => '','schedules'=>''], 200);
+            $schedule = Submissions::where('reportId','=',Auth::user()->reportId)->get();
+            $documents = Consultants::find(Auth::user()->reportId);
+            return response()->json(['user' => '','schedules'=>$schedule,'documents'=>$documents], 200);
         }
 
     }

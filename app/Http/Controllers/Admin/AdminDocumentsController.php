@@ -76,10 +76,21 @@ class AdminDocumentsController extends Controller
         if ($request->userId) {
 
             $timesheet = TimeSheetDocuments::with('user_details')
-                ->when($request->get('date'), function ($query) use ($request) {
+              /*  ->when($request->get('date'), function ($query) use ($request) {
                     if ($request->get('date')) {
                         $query->whereYear('dateOfWeek', '=', \Carbon\Carbon::parse($request->get('date'))->format('Y'));
                         $query->whereMonth('dateOfWeek', '=', \Carbon\Carbon::parse($request->get('date'))->format('m'));
+                    }
+                }) */
+                ->when($request->get('date1'), function ($query) use ($request) {
+                    if ($request->get('date1')) {
+                        if($request->get('date1')&&$request->get('date2'))
+                        {
+                            $start = \Carbon\Carbon::parse($request->get('date1'))->format('Y-m-d');
+                            $end =  \Carbon\Carbon::parse($request->get('date2'))->format('Y-m-d');
+                            $query->whereBetween('dateOfWeek',[$start,$end]);
+                        }
+
                     }
                 })
                 ->whereNotIn("documentId", $duplicateIds)
@@ -104,10 +115,21 @@ class AdminDocumentsController extends Controller
                 }
 
                $getHours =   TimeSheet::select(DB::raw('sum(duration) as total'))
-               ->when($request->get('date'), function ($query) use ($request) {
+              /* ->when($request->get('date'), function ($query) use ($request) {
                 if ($request->get('date')) {
                     $query->whereYear('fromDate', '=', \Carbon\Carbon::parse($request->get('date'))->format('Y'));
                     $query->whereMonth('fromDate', '=', \Carbon\Carbon::parse($request->get('date'))->format('m'));
+                        }
+                    }) */
+                    ->when($request->get('date1'), function ($query) use ($request) {
+                        if ($request->get('date1')) {
+                            if($request->get('date1')&&$request->get('date2'))
+                            {
+                                $start = \Carbon\Carbon::parse($request->get('date1'))->format('Y-m-d');
+                                $end =  \Carbon\Carbon::parse($request->get('date2'))->format('Y-m-d');
+                                $query->whereBetween('fromDate',[$start,$end]);
+                            }
+
                         }
                     })
                ->where('userId','=',$request->userId)
