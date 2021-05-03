@@ -35,11 +35,11 @@ class TimeSheetController extends Controller
             'duration' => 'required',
             'date' => 'unique:employeetimesheet,fromDate,NULL,timeSheetId,userId,'.Auth::user()->id
         ]);
-if($request->groupname =='leave')
+if($request->groupname =='leave' || $request->groupname =='holiday')
 {
     $user = TimeSheet::create([
         'duration' => 0,
-        'timeSheetType' => 'leave',
+        'timeSheetType' => $request->groupname,
         'fromDate' => $request->date,
         'assignment' => $request->assignment,
         'userId' => Auth::user()->id,
@@ -106,13 +106,18 @@ if($request->groupname =='leave')
 
 
         $user = TimeSheet::find($id);
-        $user->update([
-            'duration' => $request->duration,
-            'fromDate' => $request->fromDate,
-            'assignment' => $request->assignment,
-            'serviceCode' => $request->serviceCode
+        if($request->duration>0)
+        {
+            $user->update([
+                'duration' => $request->duration,
+                'fromDate' => $request->fromDate,
+                'timeSheetType' => 'work',
+                'assignment' => $request->assignment,
+                'serviceCode' => $request->serviceCode
 
-        ]);
+            ]);
+        }
+
             return response()->json(['user' => $user,'message' => 'Timesheet Updated Successfully'], 200);
 
                }else{
