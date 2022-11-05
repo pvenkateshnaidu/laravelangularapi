@@ -55,6 +55,7 @@ class AdminDocumentsController extends Controller
             $MyObject->dateOfWeek =$value->dateOfWeek;
             $MyObject->name=$value->user_details->name;
             $MyObject->doucmentName =$value->doucmentName;
+            $MyObject->created_at =$value->created_at;
             $from= Carbon::parse($value->dateOfWeek)->startOfWeek(Carbon::SUNDAY)->format('Y-m-d');
             $to= Carbon::parse($value->dateOfWeek)->endOfWeek(Carbon::SATURDAY)->format('Y-m-d');
             $MyObject->startWeek =$from;
@@ -107,6 +108,7 @@ class AdminDocumentsController extends Controller
                 $MyObject->dateOfWeek =$value->dateOfWeek;
                 $MyObject->name=$value->user_details->name;
                 $MyObject->doucmentName =$value->doucmentName;
+                $MyObject->created_at =$value->created_at;
                 $from= Carbon::parse($value->dateOfWeek)->startOfWeek(Carbon::SUNDAY)->format('Y-m-d');
                 $to= Carbon::parse($value->dateOfWeek)->endOfWeek(Carbon::SATURDAY)->format('Y-m-d');
                 $MyObject->startWeek =$from;
@@ -151,6 +153,7 @@ class AdminDocumentsController extends Controller
                     $MyObject->dateOfWeek =$value->dateOfWeek;
                     $MyObject->name=$value->user_details->name;
                     $MyObject->doucmentName =$value->doucmentName;
+                    $MyObject->created_at =$value->created_at;
                     $from= Carbon::parse($value->dateOfWeek)->startOfWeek(Carbon::SUNDAY)->format('Y-m-d');
                     $to= Carbon::parse($value->dateOfWeek)->endOfWeek(Carbon::SATURDAY)->format('Y-m-d');
                     $MyObject->startWeek =$from;

@@ -57,12 +57,13 @@ class UserListController extends Controller
         if(Auth::user()->role=='Admin')
         {
         $user = User::where('role','=','User')->where('userStatus','=','A')->get();
-        $schedule = Submissions::where('reportId','=',Auth::user()->reportId)->get();
-        return response()->json(['user' => $user,'schedules'=>$schedule], 200);
+        //$schedule = Submissions::where('reportId','=',Auth::user()->reportId)->get();
+       // return response()->json(['user' => $user,'schedules'=>$schedule], 200);
+       return response()->json(['user' => $user,'schedules'=>''], 200);
         }else{
-            $schedule = Submissions::where('reportId','=',Auth::user()->reportId)->get();
-            $documents = Consultants::find(Auth::user()->reportId);
-            return response()->json(['user' => '','schedules'=>$schedule,'documents'=>$documents], 200);
+         //   $schedule = Submissions::where('reportId','=',Auth::user()->reportId)->get();
+            //$documents = Consultants::find(Auth::user()->reportId);
+            return response()->json(['user' => '','schedules'=>'','documents'=>''], 200);
         }
 
     }

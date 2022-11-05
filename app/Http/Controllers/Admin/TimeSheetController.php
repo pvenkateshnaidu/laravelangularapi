@@ -106,8 +106,8 @@ if($request->groupname =='leave' || $request->groupname =='holiday')
 
 
         $user = TimeSheet::find($id);
-        if($request->duration>0)
-        {
+        //if($request->duration>0)
+       // {
             $user->update([
                 'duration' => $request->duration,
                 'fromDate' => $request->fromDate,
@@ -116,7 +116,7 @@ if($request->groupname =='leave' || $request->groupname =='holiday')
                 'serviceCode' => $request->serviceCode
 
             ]);
-        }
+       // }
 
             return response()->json(['user' => $user,'message' => 'Timesheet Updated Successfully'], 200);
 
